@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+</head>
+
+<style>
+    body {
+        background-color: black;
+    }
+
+    .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #007acc;
+    }
+
+    h1 {
+        margin-top: 15px;
+        font-size: 2.5em;
+        color: #007acc;
+    }
+
+    section {
+        padding: 20px 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    h2 {
+        color: #c8e6c9;
+        border-bottom: 2px solid #c8e6c9;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    a {
+        color: #007acc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .contact a {
+        display: inline-block;
+        margin-right: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .intro-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #e6f2e6;
+    }
+
+    .intro-text {
+        flex: 1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .intro-text h1 {
+        font-size: 2.8em;
+        margin-bottom: 10px;
+        color: #d4f1c5;
+        font-weight: 700;
+    }
+
+    .intro-text p {
+        font-size: 1.15em;
+        line-height: 1.6;
+        color: #c8e6c9;
+    }
+
+    .intro-photo {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 180px;
+    }
+
+    .intro-photo img {
+        width: 180px;
+        height: 180px;
+        border-radius: 1rem;
+        object-fit: cover;
+        display: block;
+    }
+
+    .contact-icons {
+        display: flex;
+        gap: 35px;
+        font-size: 1.3em;
+    }
+
+    .contact-icons a {
+        color: #e6f2e6;
+        transition: color 0.3s ease;
+    }
+
+    .contact-icons a:hover {
+        color: #7bc47f;
+    }
+
+    .company-name {
+        font-weight: bolder;
+        color: #7bc47f;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        gap: 10px;
+    }
+
+    .company-name:hover {
+        color: #a0dca0;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    main {
+        padding-top: 70px;
+    }
+</style>
+
+<title>Sign Up</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <!-- About Content -->
+        <div class="container" role="main">
+            <section class="intro-section" role="region" aria-label="Introduction">
+                <div class="intro-text">
+                    <div class="d-flex justify-content-center align-items-center" style="background-color: black;">
+                        <div class="container  card p-4 shadow"
+                            style="min-width: 350px; width: 100%; box-sizing: border-box;width: 50vh;">
+                            <div class="text-center mb-3">
+                                <img src="/public/images/logo.png" alt="logo" class="mb-2"
+                                    style="border-radius: 50%; height: 100px;">
+                                <h4 class="mb-0">Sign Up</h4>
+                            </div>
+                            <form action="/user/signup" method="POST">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" name="fullName" id="fullName"
+                                        aria-describedby="fullName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>

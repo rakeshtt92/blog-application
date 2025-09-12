@@ -1,0 +1,75 @@
+<style>
+  body {
+    margin: 0;
+  }
+
+  .navbar,
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 0px;
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar a:hover {
+    background-color: #515151;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .dropdown-menu {
+    color: black;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <h4 class="navbar-brand" href="/" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+      <img src="/images/profile.jpg" alt="RakeshTT Photo"
+        style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;" />
+      RakeshTT
+    </h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <% if(locals.user){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/addnewBlog">Add Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= locals.user.fullName.charAt(0).toUpperCase() + locals.user.fullName.slice(1) %>
+            </a>
+            <ul class="dropdown-menu" style="background-color:black">
+              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+            </ul>
+          </li>
+          <% } else {%>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/signin">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/signup">Create Account</a>
+            </li>
+
+            <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if(locals.error) { %>
+  <div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+      <%= locals.error %>
+    </div>
+  </div>
+
+  <% } %>

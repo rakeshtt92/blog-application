@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+</head>
+
+<style>
+    body {
+        background-color: black;
+    }
+
+    .card {
+        max-height: 100%;
+        width: 50%h;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #007acc;
+    }
+
+    h1 {
+        margin-top: 15px;
+        font-size: 2.5em;
+        color: #007acc;
+    }
+
+    section {
+        padding: 20px 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    h2 {
+        color: #c8e6c9;
+        border-bottom: 2px solid #c8e6c9;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    a {
+        color: #007acc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .contact a {
+        display: inline-block;
+        margin-right: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .intro-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #e6f2e6;
+    }
+
+    .intro-text {
+        flex: 1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .intro-text h1 {
+        font-size: 2.8em;
+        margin-bottom: 10px;
+        color: #d4f1c5;
+        font-weight: 700;
+    }
+
+    .intro-text p {
+        font-size: 1.15em;
+        line-height: 1.6;
+        color: #c8e6c9;
+    }
+
+    .intro-photo {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 180px;
+    }
+
+    .intro-photo img {
+        width: 180px;
+        height: 180px;
+        border-radius: 1rem;
+        object-fit: cover;
+        display: block;
+    }
+
+    .contact-icons {
+        display: flex;
+        gap: 35px;
+        font-size: 1.3em;
+    }
+
+    .contact-icons a {
+        color: #e6f2e6;
+        transition: color 0.3s ease;
+    }
+
+    .contact-icons a:hover {
+        color: #7bc47f;
+    }
+
+    .company-name {
+        font-weight: bolder;
+        color: #7bc47f;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        gap: 10px;
+    }
+
+    .company-name:hover {
+        color: #a0dca0;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    main {
+        padding-top: 70px;
+    }
+</style>
+
+<title>Rakesh TT - Frontend Developer</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <!-- About Content -->
+        <div class="container" role="main">
+            <% if(!locals.user){ %>
+                <section class="intro-section" role="region" aria-label="Introduction">
+                    <div class="intro-text">
+                        <h1>Hey! I’m <strong><span class="company-name"> Rakesh TT </span></strong> and I'm a
+                            Frontend
+                            Developer</h1>
+                        <p>
+                            I’m a Frontend Developer with 6+ years of professional experience, specializing in
+                            Angular
+                            and modern web technologies. While my primary focus is delivering clean, responsive, and
+                            user-friendly front-end interfaces, I also have solid experience working with Node.js
+                            for
+                            backend development.
+                        </p>
+                        <p>
+                            I have contributed to projects in industries ranging from enterprise software to
+                            customer-facing platforms, working with companies such as
+                            <span class="company-name"> Capgemini </span>, <span class="company-name">Sonata
+                                Software</span>,
+                            and
+                            <span class="company-name">Mobijini</span>. My work emphasizes performance, scalability,
+                            and
+                            an excellent user experience.
+                        </p>
+                    </div>
+                    <div class="intro-photo">
+                        <img src="/images/profile.jpg" alt="Photo of Rakesh TT" class="profile-img" />
+
+                        <div class="contact-icons">
+                            <a href="mailto:rakeshyasht92@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/rakesh-tt" target="_blank" rel="noopener noreferrer"
+                                title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/rakeshtt" target="_blank" rel="noopener noreferrer"
+                                title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <% } %>
+
+                    <% if (locals.user) { %>
+                        <h4 class="company-name mt-5" style="margin-left: 1rem;">Recently added blogs</h4>
+                        <div class="container row row-cols-1 row-cols-md-3 g-4">
+                            <% blogs.forEach(blog=> { %>
+                                <div class="col mt-5">
+                                    <div class="card h-100">
+                                        <img src="<%= blog.coverImageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%= blog.title %>
+                                            </h5>
+                                            <a href="/blog/<%= blog._id %>" class="btn btn-primary mt-auto">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% } %>
+        </div>
+
+        <div class="d-flex justify-content-center align-items- contact-icons mt-5">
+            <% if(!locals.user){ %>
+                <a href="mailto:rakeshyasht92@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rakesh-tt" target="_blank" rel="noopener noreferrer"
+                    title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/rakeshtt" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <% } %>
+        </div>
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>
