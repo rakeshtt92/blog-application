@@ -26,8 +26,10 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t rakeshtt/blog-application:latest .
-          # Optional: tag with short SHA
-          IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)
+
+          # Tag image safely with short SHA
+          IMAGE_TAG=${GITHUB_SHA::7}   # first 7 characters of SHA
+          echo "Tagging image as rakeshtt/blog-application:$IMAGE_TAG"
           docker tag rakeshtt/blog-application:latest rakeshtt/blog-application:$IMAGE_TAG
 
       # 4️⃣ Push Docker images
