@@ -20,7 +20,9 @@ app.use(express.static(path.resolve('./public')));
 app.use('/public', express.static('public'));
 
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/blogify-aws', {
+// mongoose.connect(process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/blogify-aws', {
+    mongoose.connect(process.env.MONGO_URL || 'mongodb://host.docker.internal:27017/blogdb', {
+
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -43,6 +45,6 @@ app.get('/', async (req, res) => {
 app.use('/user', userRouter);    
 app.use('/blog', blogRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
